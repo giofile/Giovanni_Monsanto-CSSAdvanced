@@ -1,0 +1,242 @@
+$baseColor: #c3cfe2;
+$neutralColor: white;
+$textColor:black;
+$folderColor: #686de0;
+$siteColor: #c3c3c3;
+$hoverColor: #c33;
+
+
+@import './justifier';
+@import './display';
+
+
+
+body{
+    background-color: $baseColor;
+    font-family: Arial, Helvetica, sans-serif;
+    margin: auto;
+}
+
+section-1{
+    @include starter(flex);
+    @include justifier(center);
+    background-color: $neutralColor;
+}
+
+.blok{
+    height: 700px;
+    width: 600px;
+    border: $baseColor solid 2px;
+    background-color: $baseColor;
+}
+
+.boven{
+    height: 435px;
+    width: 530px;
+    margin-left: 20px;
+    margin-top: 8px;
+    margin-bottom: 0px;
+    margin-right: 10px;
+    padding: 10px;
+    border-radius: 20px 20px 0px 0px;
+    border: solid $baseColor 0.001px;
+    background-color: $neutralColor;
+}
+
+.tekst{
+    margin: 35px;
+}
+
+.boven p{
+    font-size: 28px;
+    line-height: 1.7em;
+    color: $textColor;
+    font-weight: 200;
+}
+
+.afbeelding{
+    width: 150px;
+    height: 150px;
+    margin: 0px;
+    margin-left: 180px;
+    border-radius: 50%;
+    border: 8px solid $neutralColor;
+    box-shadow: 0 0 3px $neutralColor;
+}
+
+.onder{
+    height:200px;
+    width: 530px;
+    margin-left: 20px;
+    margin-top: 0px;
+    margin-right: 10px;
+    margin-bottom: 8px;
+    padding: 10px;
+    border-radius: 0px 0px 20px 20px;
+    border: solid $baseColor 0.001px;
+    background-color: $folderColor;
+}
+.name{
+    @include starter(flex);
+    @include justifier(center);
+    color: $neutralColor;
+    letter-spacing: 0.5em;
+    font-weight: 600;
+}
+
+.site{
+    @include starter(flex);
+    @include justifier(center);
+    word-spacing: 2em;
+    letter-spacing: 0.3em;
+    color: $siteColor;
+}
+
+.portfolio-grid{
+    @include starter(grid);
+    width: 100%;
+    height: 1100px;
+    object-fit: contain;
+    background: $baseColor;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 10px;
+    grid-template-rows: repeat(3, 1fr);
+    grid-template-areas: "h i j"
+                         "k l m"
+                         "n . .";
+  }
+  
+  
+.a{
+    grid-area: h;
+}
+  
+.b{
+    grid-area: i;
+}
+  
+.c{
+    grid-area: j;
+}
+  
+.d{
+    grid-area: k;
+}
+  
+.e{
+    grid-area: l; 
+}
+  
+.f{
+    grid-area: m;
+    
+  }
+  
+.g{
+    grid-area: n;  
+}
+
+.container {
+      position: relative;
+      width: 100%;
+}
+    
+.image {
+      opacity: 1;
+      @include starter(block);
+      width: 100%;
+      height: auto;
+      transition: 2s ease;
+    
+}
+    
+.middle {
+      transition: 7s  ease;
+      opacity: 0;
+      position: absolute;
+      top: 50%;
+      left: 42%;
+      text-align: center;
+}
+    
+.container:hover .image {
+      opacity: 0;
+}
+    
+.container:hover .middle {
+      opacity: 1;
+}
+
+
+li{
+        background: $baseColor;
+        list-style: none;
+        white-space: nowrap;
+        margin-right: 10px;
+        margin-left: 1000px;
+        border-radius: 10px;
+        @include starter(flex);
+        @include justifier(flex-end);
+        a{
+        opacity: 0;
+        color: $neutralColor;
+        max-width: 0;
+        text-decoration: none;
+        transition: max-width 1s ease-out .1s, opacity 1s ease-out .1s, color;
+        b{
+        color: $hoverColor;
+        font-size: 40px;
+        @include starter(inline-block);
+        p{
+        float: right;
+        @include starter(block);
+}
+}
+}
+}
+    
+li a:hover{
+        color: $hoverColor;
+}
+
+li:hover{}
+  li:hover a{
+        opacity: 1;
+        max-width: 300px;
+        transition: max-width 2s ease-out .1s, opacity 1s ease-out, color .2s;
+}
+  
+// media query for tablet , onder 770px
+@media  (max-width: 770px ) {
+    .portfolio-grid{
+        @include starter(grid);
+        width: 100%;
+        height: 1000px;
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap: 10px;
+        grid-template-rows: repeat(4, 1fr);
+        grid-template-areas: "h i"
+                             "j k"
+                             "l m"
+                             "n .";        
+}                           
+}
+
+// media query for mobile , onder 320px
+@media  (max-width: 320px ) {
+    .portfolio-grid{
+        @include starter(grid);
+        width: 100%;
+        height: 1500px;
+        grid-template-columns: 1fr;
+        grid-gap: 10px;
+        grid-template-rows: repeat(7, 1fr);
+        grid-template-areas: "h"
+                             "i"
+                             "j"
+                             "k"
+                             "l"
+                             "m"
+                             "n";                             
+}                           
+}
